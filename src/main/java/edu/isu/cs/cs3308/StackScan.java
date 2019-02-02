@@ -33,11 +33,12 @@ public class StackScan {
 
        while (!stack.isEmpty()){
               queue.offer(stack.pop());
-           }
-           if (queue.peek() == element){
+              if (queue.peek() == element){
+               E checkElement = element;
                check = true;
-               stack.push(queue.peek());
-           }
+               stack.push((queue.poll()));
+              }
+            }
            return check;
        }
     }

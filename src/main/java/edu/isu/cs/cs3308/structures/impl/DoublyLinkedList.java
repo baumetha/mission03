@@ -85,7 +85,7 @@ public class DoublyLinkedList<E> implements List<E> {
      * Removes the element at the end of the list.
      *
      * @return Element at the end of the list, or null if the list is empty.
-     * taken from book's implementation on page 137
+     * Example from the book
      */
     public E removeLast(){
         if (isEmpty()){

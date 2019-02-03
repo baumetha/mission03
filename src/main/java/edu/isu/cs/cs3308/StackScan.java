@@ -8,7 +8,7 @@ import edu.isu.cs.cs3308.structures.impl.LinkedStack;
 /**
  *
  * @author Isaac Griffith
- * @author
+ * @author Ethan Baumgartner
  */
 public class StackScan {
 
@@ -17,8 +17,8 @@ public class StackScan {
      * Implementation should use a queue to scan the stack and reconstruct it
      * when done.
      *
-     * @param <E> Type of elements stored in the stack
-     * @param stack Stack to be scanned.
+     * @param <E>     Type of elements stored in the stack
+     * @param stack   Stack to be scanned.
      * @param element Element to search the stack for.
      * @return True if the given stack is not null and contains the given
      * element. Returns false if both the stack and element are not null and the
@@ -30,15 +30,17 @@ public class StackScan {
             return false;
         boolean check = false;
         LinkedQueue<E> queue = new LinkedQueue<>();
-
-       while (!stack.isEmpty()){
-              queue.offer(stack.pop());
-              if (queue.peek() == element){
-               E checkElement = element;
-               check = true;
-               stack.push((queue.poll()));
-              }
+        while (stack.size() > 0) {
+            E checkelement = stack.pop();
+            if (checkelement == element){
+                check = true;
             }
-           return check;
-       }
+            queue.offer(checkelement);
+        }
+        queue.reverse();
+        while (queue.size() > 0) {
+            stack.push(queue.poll());
+            }
+        return check;
     }
+}

@@ -3,7 +3,7 @@ package edu.isu.cs.cs3308.structures.impl;
  import edu.isu.cs.cs3308.structures.Queue;
 
 /**
- * @author Isaac Griffith
+ * @author Ethan Baumgartner
  */
 public class LinkedQueue<E> implements Queue<E> {
 
@@ -75,11 +75,11 @@ public class LinkedQueue<E> implements Queue<E> {
      */
     public void transfer(Queue<E> into){
         if(isEmpty() || into == null) return;
-        while (!into.isEmpty()){
+        while (into.size() > 0){
             offer(into.poll());
         }
         reverse();
-        while (!isEmpty()){
+        while (size() > 0){
             into.offer(poll());
         }
     }
@@ -89,10 +89,10 @@ public class LinkedQueue<E> implements Queue<E> {
      */
     public void reverse() {
         LinkedStack<E> stack = new LinkedStack<>();
-        while (!isEmpty()){
+        while (size() > 0){
             stack.push(poll());
         }
-        while (!stack.isEmpty()){
+        while (stack.size() > 0){
             offer(stack.pop());
         }
     }
@@ -109,7 +109,7 @@ public class LinkedQueue<E> implements Queue<E> {
      */
     public void merge(Queue<E> from){
         if (from == null) return;
-        while (!from.isEmpty()){
+        while (from.size() > 0){
             offer(from.poll());
         }
     }
